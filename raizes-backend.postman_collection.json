@@ -1,0 +1,168 @@
+{
+  "info": {
+    "name": "Raizes Backend API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "url": "http://localhost:8000/auth/register",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"nome\":\"Teste\",\"email\":\"teste@email.com\",\"senha\":\"123456\",\"perfil\":\"CLIENTE\"}"
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "url": "http://localhost:8000/auth/login",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\":\"teste@email.com\",\"senha\":\"123456\"}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Unidades",
+      "item": [
+        {
+          "name": "Listar Unidades",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8000/unidades",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Produtos",
+      "item": [
+        {
+          "name": "Cardapio por Unidade",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8000/unidades/1/produtos",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Pedidos",
+      "item": [
+        {
+          "name": "Criar Pedido (APP)",
+          "request": {
+            "method": "POST",
+            "url": "http://localhost:8000/pedidos",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"cliente_id\":1,\"unidade_id\":1,\"canal\":\"APP\",\"itens\":[{\"produto_id\":1,\"quantidade\":2}]}"
+            }
+          }
+        },
+        {
+          "name": "Criar Pedido (TOTEM)",
+          "request": {
+            "method": "POST",
+            "url": "http://localhost:8000/pedidos",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"cliente_id\":1,\"unidade_id\":1,\"canal\":\"TOTEM\",\"itens\":[{\"produto_id\":1,\"quantidade\":1}]}"
+            }
+          }
+        },
+        {
+          "name": "Listar Pedidos",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8000/pedidos",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }]
+          }
+        },
+        {
+          "name": "Listar Pedidos por Canal (APP)",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8000/pedidos?canal=APP",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }]
+          }
+        },
+        {
+          "name": "Buscar Pedido por ID",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8000/pedidos/1",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Pagamento",
+      "item": [
+        {
+          "name": "Solicitar Pagamento Mock",
+          "request": {
+            "method": "POST",
+            "url": "http://localhost:8000/pagamentos/solicitar",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"pedido_id\":1}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Fidelidade",
+      "item": [
+        {
+          "name": "Consultar Pontos",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8000/fidelidade/1",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Seed",
+      "item": [
+        {
+          "name": "Popular Banco com Dados de Teste",
+          "request": {
+            "method": "POST",
+            "url": "http://localhost:8000/seed",
+            "header": [{ "key": "Content-Type", "value": "application/json" }]
+          }
+        }
+      ]
+    }
+  ]
+}
