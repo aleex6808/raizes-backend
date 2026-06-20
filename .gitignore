@@ -1,0 +1,25 @@
+# Python
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Banco de dados
+*.db
+*.sqlite3
+
+# Configurações sensíveis
+.env
+*.env.local
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# Testes
+.pytest_cache/
+.mypy_cache/
